@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @daily_presence.student_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @daily_presence.date %>
+</p>
+
+<%= link_to 'Edit', edit_daily_presence_path(@daily_presence) %> |
+<%= link_to 'Back', daily_presences_path %>

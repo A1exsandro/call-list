@@ -1,0 +1,27 @@
+<%= form_with(model: daily_presence) do |form| %>
+  <% if daily_presence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(daily_presence.errors.count, "error") %> prohibited this daily_presence from being saved:</h2>
+
+      <ul>
+        <% daily_presence.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.select("student_id", @student_options, { include_blank: 'Selecione...' }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
