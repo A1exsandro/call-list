@@ -1,0 +1,22 @@
+<%= form_with(model: student_list) do |form| %>
+  <% if student_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_list.errors.count, "error") %> prohibited this student_list from being saved:</h2>
+
+      <ul>
+        <% student_list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

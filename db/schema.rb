@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_202912) do
+ActiveRecord::Schema.define(version: 2022_07_30_202959) do
 
   create_table "daily_presences", force: :cascade do |t|
     t.integer "student_id", null: false
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2022_07_29_202912) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_daily_presences_on_student_id"
+  end
+
+  create_table "student_lists", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -28,5 +34,15 @@ ActiveRecord::Schema.define(version: 2022_07_29_202912) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.string "name"
+    t.boolean "present"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_users_on_student_id"
+  end
+
   add_foreign_key "daily_presences", "students"
+  add_foreign_key "users", "students"
 end
